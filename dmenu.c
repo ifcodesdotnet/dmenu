@@ -323,6 +323,46 @@ keypress(XKeyEvent *ev)
 		break;
 	}
 
+
+
+	//here
+
+	//https://stackoverflow.com/questions/23856306/how-to-create-log-file-in-c/23856430
+	FILE *file;
+	file = fopen("dmenu-debug.log", "a+");
+	if (file == NULL) { 
+		/* Something is wrong   */
+	}
+
+
+
+	//Mod1Mask
+	if(ev->state & Mod1Mask){
+		if(ksym = XK_Tab){
+			fprintf(file, "This is hitting ALT+Tab\n");
+			//int status = system("st");
+
+			if(fork() == 0){ 
+				//https://stackoverflow.com/questions/7948816/how-to-start-another-program-without-having-to-wait-on-it-in-c
+				//system("nohup st &");
+				
+				system("nohup ~/source/dswitcher/dswitcher_v2 &");
+				
+				
+
+
+				//https://www.dummies.com/programming/c/how-to-instruct-a-function-to-exit-early-in-c-programming/
+			}
+				exit(0);//this will end dmenu
+
+		}
+	}
+
+	
+
+
+
+
 	if (ev->state & ControlMask) {
 		switch(ksym) {
 		case XK_a: ksym = XK_Home;      break;
