@@ -338,7 +338,7 @@ keypress(XKeyEvent *ev)
 
 	//Mod1Mask
 	if(ev->state & Mod1Mask){
-		if(ksym = XK_Tab){
+		if((ksym = XK_Tab)){
 			fprintf(file, "This is hitting ALT+Tab\n");
 			//int status = system("st");
 
