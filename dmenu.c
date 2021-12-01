@@ -326,7 +326,7 @@ keypress(XKeyEvent *ev)
 
 
 	//here
-
+	
 	//https://stackoverflow.com/questions/23856306/how-to-create-log-file-in-c/23856430
 	FILE *file;
 	file = fopen("dmenu-debug.log", "a+");
@@ -336,27 +336,27 @@ keypress(XKeyEvent *ev)
 
 
 
-	//Mod1Mask
-	if(ev->state & Mod1Mask){
-		if((ksym = XK_Tab)){
-			fprintf(file, "This is hitting ALT+Tab\n");
-			//int status = system("st");
+	// // // //Mod1Mask
+	// if(ev->state & Mod1Mask){
+	// 	if((ksym = XK_Tab)){
+	// 		fprintf(file, "This is hitting ALT+Tab\n");
+	// 		//int status = system("st");
 
-			if(fork() == 0){ 
-				//https://stackoverflow.com/questions/7948816/how-to-start-another-program-without-having-to-wait-on-it-in-c
-				//system("nohup st &");
+	// 		if(fork() == 0){ 
+	// 			//https://stackoverflow.com/questions/7948816/how-to-start-another-program-without-having-to-wait-on-it-in-c
+	// 			//system("nohup st &");
 				
-				system("nohup ~/source/dswitcher/dswitcher_v2 &");
+	// 			system("nohup ~/source/dswitcher/dswitcher_v2 &");
 				
 				
 
 
-				//https://www.dummies.com/programming/c/how-to-instruct-a-function-to-exit-early-in-c-programming/
-			}
-				exit(0);//this will end dmenu
+	// 			//https://www.dummies.com/programming/c/how-to-instruct-a-function-to-exit-early-in-c-programming/
+	// 		}
+	// 			exit(0);//this will end dmenu
 
-		}
-	}
+	// 	}
+	// }
 
 	
 
@@ -429,7 +429,11 @@ keypress(XKeyEvent *ev)
 		case XK_h: ksym = XK_Up;    break;
 		case XK_j: ksym = XK_Next;  break;
 		case XK_k: ksym = XK_Prior; break;
-		case XK_l: ksym = XK_Down;  break;
+		case XK_l: ksym = XK_Down;  break;		
+		case XK_Tab:
+			system("nohup ~/source/dswitcher/dswitcher_v2 &");
+			exit(0); 
+			break;
 		default:
 			return;
 		}
